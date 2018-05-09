@@ -1,0 +1,14 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+  spatium:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+volumes:
+  pg-data: {}

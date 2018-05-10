@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 require File.expand_path('../../config/environment', __FILE__)
+=======
+ENV['RAILS_ENV'] ||= 'test'
+require_relative '../config/environment'
+>>>>>>> New project created with Rails 5.2
 require 'rails/test_help'
 
 class ActiveSupport::TestCase

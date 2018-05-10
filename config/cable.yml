@@ -6,5 +6,9 @@ test:
 
 production:
   adapter: redis
+<<<<<<< HEAD
   url: redis://localhost:6379/1
+=======
+  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+>>>>>>> New project created with Rails 5.2
   channel_prefix: spatium_production

@@ -12,4 +12,13 @@ COPY Gemfile.lock /spatium/Gemfile.lock
 
 RUN bundle install
 
+<<<<<<< HEAD
+=======
+RUN rails active_storage:install
+
+RUN rails db:create
+
+RUN rails db:migrate
+
+>>>>>>> New project created with Rails 5.2
 ADD . /spatium

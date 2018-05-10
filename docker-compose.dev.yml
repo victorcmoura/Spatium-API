@@ -11,5 +11,13 @@ services:
       - "3000:3000"
     depends_on:
       - db
+<<<<<<< HEAD
+=======
+    environment:
+      AMAZON_S3_BUCKET: spatium-api
+      AMAZON_REGION: sa-east-1
+      AMAZON_SECRET_KEY:
+      AMAZON_ACCESS_KEY_ID:
+>>>>>>> New project created with Rails 5.2
 volumes:
   pg-data: {}

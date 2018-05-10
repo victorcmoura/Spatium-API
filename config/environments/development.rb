@@ -13,12 +13,21 @@ Rails.application.configure do
   config.consider_all_requests_local = true
 
   # Enable/disable caching. By default caching is disabled.
+<<<<<<< HEAD
   if Rails.root.join('tmp/caching-dev.txt').exist?
+=======
+  # Run rails dev:cache to toggle caching.
+  if Rails.root.join('tmp', 'caching-dev.txt').exist?
+>>>>>>> New project created with Rails 5.2
     config.action_controller.perform_caching = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
+<<<<<<< HEAD
       'Cache-Control' => "public, max-age=#{2.days.seconds.to_i}"
+=======
+      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+>>>>>>> New project created with Rails 5.2
     }
   else
     config.action_controller.perform_caching = false
@@ -26,6 +35,12 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+<<<<<<< HEAD
+=======
+  # Store uploaded files on the local file system (see config/storage.yml for options)
+  config.active_storage.service = :local
+
+>>>>>>> New project created with Rails 5.2
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
@@ -37,6 +52,12 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
+<<<<<<< HEAD
+=======
+  # Highlight code that triggered database queries in logs.
+  config.active_record.verbose_query_logs = true
+
+>>>>>>> New project created with Rails 5.2
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

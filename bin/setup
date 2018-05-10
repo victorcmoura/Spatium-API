@@ -1,10 +1,17 @@
 #!/usr/bin/env ruby
+<<<<<<< HEAD
 require 'pathname'
+=======
+>>>>>>> New project created with Rails 5.2
 require 'fileutils'
 include FileUtils
 
 # path to your application root.
+<<<<<<< HEAD
 APP_ROOT = Pathname.new File.expand_path('../../', __FILE__)
+=======
+APP_ROOT = File.expand_path('..', __dir__)
+>>>>>>> New project created with Rails 5.2
 
 def system!(*args)
   system(*args) || abort("\n== Command #{args} failed ==")
@@ -18,7 +25,10 @@ chdir APP_ROOT do
   system! 'gem install bundler --conservative'
   system('bundle check') || system!('bundle install')
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> New project created with Rails 5.2
   # puts "\n== Copying sample files =="
   # unless File.exist?('config/database.yml')
   #   cp 'config/database.yml.sample', 'config/database.yml'

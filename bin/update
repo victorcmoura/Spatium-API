@@ -1,10 +1,17 @@
 #!/usr/bin/env ruby
+<<<<<<< HEAD
 require 'pathname'
+=======
+>>>>>>> New project created with Rails 5.2
 require 'fileutils'
 include FileUtils
 
 # path to your application root.
+<<<<<<< HEAD
 APP_ROOT = Pathname.new File.expand_path('../../', __FILE__)
+=======
+APP_ROOT = File.expand_path('..', __dir__)
+>>>>>>> New project created with Rails 5.2
 
 def system!(*args)
   system(*args) || abort("\n== Command #{args} failed ==")

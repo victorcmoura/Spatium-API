@@ -12,4 +12,8 @@ COPY Gemfile.lock /spatium/Gemfile.lock
 
 RUN bundle install
 
+RUN rails db:create db:migrate
+
+RUN rails active_storage:install
+
 ADD . /spatium

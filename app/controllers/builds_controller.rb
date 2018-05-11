@@ -15,9 +15,19 @@ class BuildsController < ApplicationController
 
   # POST /builds
   def create
+    @file = params[:file]
+    build_params = params
+    puts "="*81
+    puts params
+    puts "="*81
     @build = Build.new(build_params)
 
+
+
     if @build.save
+      if @file
+          @build.file.attach(@file)
+      end
       render json: @build, status: :created, location: @build
     else
       render json: @build.errors, status: :unprocessable_entity
@@ -44,6 +54,6 @@ class BuildsController < ApplicationController
     end
 
     def build_params
-      params.require(:build).permit(:description, :is_master, :master_tag, :dev_tag, :name, :build_url, :build_aws_id)
+      params.require(:build).permit!
     end
 end

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  is_master: false
+  master_tag: 1
+  dev_tag: 1
+  name: MyString
+  build_url: MyString
+  build_aws_id: MyString
+
+two:
+  description: MyString
+  is_master: false
+  master_tag: 1
+  dev_tag: 1
+  name: MyString
+  build_url: MyString
+  build_aws_id: MyString

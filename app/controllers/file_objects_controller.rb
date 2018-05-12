@@ -36,6 +36,7 @@ class FileObjectsController < ApplicationController
       @build.master_tag = 1
     end
     @build.dev_tag = 0
+    @build.plataform = params[:plataform]
     @build.save
 
     # Loads file
@@ -55,7 +56,8 @@ class FileObjectsController < ApplicationController
       @result = {
         build: {
           id: @build.id,
-          version: @build.master_tag.to_s + '.' + @build.dev_tag.to_s
+          version: @build.master_tag.to_s + '.' + @build.dev_tag.to_s,
+          plataform: @build.plataform
         },
         file: {
           id: @file_object.id,
@@ -83,6 +85,7 @@ class FileObjectsController < ApplicationController
       @build.master_tag = 0
       @build.dev_tag = 1
     end
+    @build.plataform = params[:plataform]
     @build.save
 
     # Loads file

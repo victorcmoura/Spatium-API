@@ -11,7 +11,8 @@ class BuildsController < ApplicationController
       @all_builds.append({
         build: {
           id: build.id,
-          version: build.master_tag.to_s + '.' + build.dev_tag.to_s
+          version: build.master_tag.to_s + '.' + build.dev_tag.to_s,
+          plataform: build.plataform
         },
         file: {
           id: build.file_object.id,
@@ -20,6 +21,87 @@ class BuildsController < ApplicationController
           url: '/file_objects/' + build.file_object.id.to_s + '/' + build.file_object.file_name
         }
       })
+    end
+
+    render json: @all_builds
+  end
+
+  # GET /builds/Windows
+  def windows_builds
+    @builds = Build.all
+
+    @all_builds = []
+
+    @builds.each do |build|
+      if build.plataform == 'Windows'
+        @all_builds.append({
+          build: {
+            id: build.id,
+            version: build.master_tag.to_s + '.' + build.dev_tag.to_s,
+            plataform: build.plataform
+          },
+          file: {
+            id: build.file_object.id,
+            file_name: build.file_object.file_name,
+            file_size: build.file_object.file_size,
+            url: '/file_objects/' + build.file_object.id.to_s + '/' + build.file_object.file_name
+          }
+        })
+      end
+    end
+
+    render json: @all_builds
+  end
+
+  # GET /builds/Linux
+  def linux_builds
+    @builds = Build.all
+
+    @all_builds = []
+
+    @builds.each do |build|
+      if build.plataform == 'Linux'
+        @all_builds.append({
+          build: {
+            id: build.id,
+            version: build.master_tag.to_s + '.' + build.dev_tag.to_s,
+            plataform: build.plataform
+          },
+          file: {
+            id: build.file_object.id,
+            file_name: build.file_object.file_name,
+            file_size: build.file_object.file_size,
+            url: '/file_objects/' + build.file_object.id.to_s + '/' + build.file_object.file_name
+          }
+        })
+      end
+    end
+
+    render json: @all_builds
+  end
+
+  # GET /builds/OSX
+  def osx_builds
+    @builds = Build.all
+
+    @all_builds = []
+
+    @builds.each do |build|
+      if build.plataform == 'OSX'
+        @all_builds.append({
+          build: {
+            id: build.id,
+            version: build.master_tag.to_s + '.' + build.dev_tag.to_s,
+            plataform: build.plataform
+          },
+          file: {
+            id: build.file_object.id,
+            file_name: build.file_object.file_name,
+            file_size: build.file_object.file_size,
+            url: '/file_objects/' + build.file_object.id.to_s + '/' + build.file_object.file_name
+          }
+        })
+      end
     end
 
     render json: @all_builds

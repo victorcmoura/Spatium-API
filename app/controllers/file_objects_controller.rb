@@ -30,8 +30,13 @@ class FileObjectsController < ApplicationController
     # Instantiates new master Build
     @build = Build.new()
     @build.is_master = true
-    if Build.all.last
-      @build.master_tag = Build.all.last.master_tag + 1
+    @last_build = Build.all.last
+    if @last_build
+      if @last_build.plataform == params[:plataform]
+        @build.master_tag = @last_build.master_tag + 1
+      else
+        @build.master_tag = @last_build.master_tag
+      end
     else
       @build.master_tag = 1
     end
@@ -77,10 +82,15 @@ class FileObjectsController < ApplicationController
   def upload_from_devel
     # Instantiates new master Build
     @build = Build.new()
-    @build.is_master = false
-    if Build.all.last
-      @build.dev_tag = Build.all.last.dev_tag + 1
-      @build.master_tag = Build.all.last.master_tag
+    @last_build = Build.all.last
+    if @last_build
+      if @last_build.plataform == params[:plataform]
+        @build.dev_tag = @last_build.dev_tag + 1
+        @build.master_tag = @last_build.master_tag
+      else
+        @build.dev_tag = @last_build.dev_tag
+        @build.master_tag = @last_build.master_tag
+      end
     else
       @build.master_tag = 0
       @build.dev_tag = 1

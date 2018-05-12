@@ -1,3 +1,3 @@
 class Build < ApplicationRecord
-  has_one_attached :file
+  has_one :file_object
 end

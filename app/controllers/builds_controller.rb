@@ -5,7 +5,24 @@ class BuildsController < ApplicationController
   def index
     @builds = Build.all
 
-    render json: @builds
+    @all_builds = []
+
+    @builds.each do |build|
+      @all_builds.append({
+        build: {
+          id: build.id,
+          version: build.master_tag.to_s + '.' + build.dev_tag.to_s
+        },
+        file: {
+          id: build.file_object.id,
+          file_name: build.file_object.file_name,
+          file_size: build.file_object.file_size,
+          url: '/file_objects/' + build.file_object.id.to_s + '/' + build.file_object.file_name
+        }
+      })
+    end
+
+    render json: @all_builds
   end
 
   # GET /builds/1
@@ -15,19 +32,9 @@ class BuildsController < ApplicationController
 
   # POST /builds
   def create
-    @file = params[:file]
-    build_params = params
-    puts "="*81
-    puts params
-    puts "="*81
     @build = Build.new(build_params)
 
-
-
     if @build.save
-      if @file
-          @build.file.attach(@file)
-      end
       render json: @build, status: :created, location: @build
     else
       render json: @build.errors, status: :unprocessable_entity
@@ -54,6 +61,6 @@ class BuildsController < ApplicationController
     end
 
     def build_params
-      params.require(:build).permit!
+      params.require(:build).permit()
     end
 end

@@ -25,7 +25,8 @@ values = {
     }
 
 # json_data = json.dumps(values)
-url = 'http://localhost:3000/builds'
+# url = 'http://localhost:3000/builds'
+url = 'http://localhost:3000/file_objects'
 
 # r = requests.post(url, files=values)
 # print(values)
@@ -34,15 +35,15 @@ multipart_data = MultipartEncoder(
     fields={
 
                 # a file upload field
-                'file': (filename, open(filename, 'rb'), 'text/plain'),
-                # # plain text fields
-                'description': 'File uploaded by Python Script',
-                'name':filename,
-                'dev_tag':'0',
-                'master_tag': '1',
-                'build_url':'',
-                'build_aws_id':'',
-                'is_master': 'True'
+                'file_object': (filename, open(filename, 'rb'), 'text/plain'),
+                # # # plain text fields
+                # 'description': 'File uploaded by Python Script',
+                # 'name':filename,
+                # 'dev_tag':'0',
+                # 'master_tag': '1',
+                # 'build_url':'',
+                # 'build_aws_id':'',
+                # 'is_master': 'True'
         }
 
 )

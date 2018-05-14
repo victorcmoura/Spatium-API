@@ -85,8 +85,13 @@ class FileObjectsController < ApplicationController
     @last_build = Build.all.last
     if @last_build
       @last_plataform_build = Build.where(:plataform => params[:plataform]).last
-      @build.master_tag = @last_plataform_build.master_tag
-      @build.dev_tag = @last_plataform_build.dev_tag + 1
+      if @last_plataform_build
+        @build.master_tag = @last_plataform_build.master_tag
+        @build.dev_tag = @last_plataform_build.dev_tag + 1
+      else
+        @build.master_tag = @last_build.master_tag
+        @build.dev_tag = @last_build.dev_tag
+      end
     else
       @build.master_tag = 0
       @build.dev_tag = 1

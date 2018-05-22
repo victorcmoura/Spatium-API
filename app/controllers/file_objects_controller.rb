@@ -32,10 +32,11 @@ class FileObjectsController < ApplicationController
     @build.is_master = true
     @last_build = Build.all.last
     if @last_build
-      if @last_build.plataform == params[:plataform]
-        @build.master_tag = @last_build.master_tag + 1
+      @last_plataform_build = Build.where(:plataform => params[:plataform]).last
+      if @last_plataform_build
+        @build.master_tag = @last_plataform_build.master_tag + 1
       else
-        @build.master_tag = @last_build.master_tag
+        @build.master_tag = 1
       end
     else
       @build.master_tag = 1
